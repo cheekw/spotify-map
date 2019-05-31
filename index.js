@@ -67,7 +67,7 @@ function drawChoropleth(color, svg, tooltip, path, ranks, states, us, legend) {
       if (isNotDC(d.id)) {
         tooltip.transition()
           .duration(200)
-          .style("opacity", .9);
+          .style("opacity", 0.9);
         tooltip.html(
           "<b>" + "State: " + states[parseInt(d.id)][1] + "</b>" + "<br/>" +
           "Artist: " + ranks[states[parseInt(d.id)][0]]['Name'] + "<br/>" +

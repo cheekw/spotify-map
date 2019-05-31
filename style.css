@@ -33,7 +33,7 @@ div.tooltip {
     z-index: 0;
 }
 
-.states :hover {
+.states:hover {
     fill-opacity: .8;
 }
 
