@@ -18,28 +18,28 @@ window.onload = function () {
   let color = scaleColors();
 
   // draws the map legend
-  drawLegend(color, svg);
+  let legend = drawLegend(color, svg);
 
   // draws the map
-  drawMap(color, svg, tooltip);
+  drawMap(color, svg, tooltip, legend);
 }
 
 // draws the entire choropleth map
-function drawMap(color, svg, tooltip) {
+function drawMap(color, svg, tooltip, legend) {
   let path = d3.geoPath();
   d3.csv("./data/artist_ranks.csv").then(rankData => getStates(rankData))
     .then(ranks => {
       d3.json("./data/us-state-names.json").then(states => {
         d3.json("./data/us-map.json").then(us => {
-          drawChoropleth(color, svg, tooltip, path, ranks, states, us);
-          unfadeMap();
+          drawChoropleth(color, svg, tooltip, path, ranks, states, us, legend);
+          unfadeMap(legend);
         });
       });
     });
 }
 
 // adds the choropleth map
-function drawChoropleth(color, svg, tooltip, path, ranks, states, us) {
+function drawChoropleth(color, svg, tooltip, path, ranks, states, us, legend) {
   svg.append("g")
     .selectAll("path")
     .data(topojson.feature(us, us.objects.states).features)
@@ -60,7 +60,7 @@ function drawChoropleth(color, svg, tooltip, path, ranks, states, us) {
     })
     .on("click", (d) => {
       if (isNotDC(d.id)) {
-        fadeAnimation(states, d.id);
+        fadeAnimation(states, d.id, legend);
       }
     })
     .on("mousemove", (d) => {
@@ -97,11 +97,11 @@ function getStates(rankData) {
 }
 
 // unfades the map
-function unfadeMap() {
+function unfadeMap(legend) {
   d3.select("html").on("click", () => {
     let outside = d3.selectAll(".states").filter(equalToEventTarget).empty();
     if (outside) {
-      unfadeAnimation();
+      unfadeAnimation(legend);
     }
   });
 }
@@ -112,7 +112,7 @@ function equalToEventTarget() {
 }
 
 // creates animtion
-function fadeAnimation(states, id) {
+function fadeAnimation(states, id, legend) {
   for (stateId in states) {
     if (states[stateId][0] != states[parseInt(id)][0]) {
       d3.select("." + states[stateId][0])
@@ -123,12 +123,15 @@ function fadeAnimation(states, id) {
   d3.select("." + states[parseInt(id)][0])
     .transition()
     .style("opacity", 1);
+  legend.transition().style("opacity", 0.1);
 }
 
 // creates unfade animation
-function unfadeAnimation(states) {
+function unfadeAnimation(legend) {
   d3.selectAll(".states")
     .transition()
+    .style("opacity", 1);
+  legend.transition()
     .style("opacity", 1);
 }
 
@@ -161,7 +164,6 @@ function drawTooltip() {
 
 // draws the map legend
 function drawLegend(color, svg) {
-
   let legend = g => {
     let x = d3.scaleLinear()
       .domain(color.domain())
@@ -199,7 +201,7 @@ function drawLegend(color, svg) {
       .remove()
   }
 
-  svg.append("g")
+  return svg.append("g")
     .attr("transform", "translate(600,40)")
     .call(legend);
 }
