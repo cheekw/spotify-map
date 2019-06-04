@@ -97,8 +97,7 @@ function drawChoropleth(color, svg, tooltip, path, ranks, states, us, legend) {
     .on("click", (d) => {
       if (isNotDC(d.id)) {
         fadeAnimation(states, d.id, legend);
-        let genreOption = document.getElementById('genre');
-        genreOption.value = 'All';
+        resetOption();
       }
     })
     .on("mousemove", (d) => {
@@ -133,7 +132,13 @@ function getStates(rankData) {
   for (let i = 0; i < rankData.length; i++) {
     ranks[rankData[i]['State']] = rankData[i];
   }
-  return ranks
+  return ranks;
+}
+
+// resets genre selection to All
+function resetOption() {
+  let genreOption = document.getElementById('genre');
+  genreOption.value = 'All';
 }
 
 // unfades the map
@@ -142,6 +147,7 @@ function unfadeMap(legend) {
     let outside = d3.selectAll(".states").filter(equalToEventTarget).empty();
     if (outside) {
       unfadeAnimation(legend);
+      resetOption();
     }
   });
 }
