@@ -16,6 +16,17 @@ h1, canvas {
     margin: 2vw;
 }
 
+
+label {
+    margin-right: 1vw;
+    font-weight: bolder;
+}
+
+.input-group {
+    max-width: 300px;
+    margin: 2vw;
+}
+
 svg {
     margin: 0 2vw;
 }

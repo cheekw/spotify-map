@@ -1,51 +1,51 @@
-﻿State,Name,State Rank,US Rank,Change
-AK,Ginger Kwan,33,12062,-12029
-AL,The Civil Wars,34,110,-76
-AR,Wiz Khalifa,15,69,-54
-AZ,Linkin Park,47,98,-51
-CA,Bonobo,28,85,-57
-CO,The Naked And Famous,48,125,-77
-CT,David Guetta,43,80,-37
-DE,Rush,38,385,-347
-FL,Rick Ross,44,103,-59
-GA,Future,33,226,-193
-HI,J Boog,40,4703,-4663
-IA,B.o.B,32,82,-50
-ID,Tegan and Sara,31,107,-76
-IL,Sufjan Stevens,38,68,-30
-IN,Blake Shelton,31,91,-60
-KS,Eric Church,48,162,-114
-KY,Fall Out Boy,17,59,-42
-LA,Kevin Gates,15,1359,-1344
-MA,Neil Young,49,128,-79
-MD,Kelly Rowland,45,217,-172
-ME,R.E.M.,28,197,-169
-MI,Young Jeezy,34,138,-104
-MN,Metric,41,211,-170
-MO,The Shins,29,67,-38
-MS,August Alsina,42,909,-867
-MT,Tim McGraw,36,187,-151
-NC,Miguel,37,88,-51
-ND,Stone Sour,47,735,-688
-NE,Bastille,48,89,-41
-NH,Grateful Dead,29,191,-162
-NJ,Bruce Springsteen,23,109,-86
-NM,Alan Jackson,45,425,-380
-NV,Ciara,34,106,-72
-NY,James Blake,47,130,-83
-OH,Florida Georgia Line,26,75,-49
-OK,Jason Aldean,24,84,-60
-OR,Kurt Vile,49,212,-163
-PA,Edward Sharpe & the Magnetic Zeros,43,77,-34
-RI,Nirvana,48,126,-78
-SC,Hillsong United,24,262,-238
-SD,Hinder,42,1154,-1112
-TN,Juicy J,47,151,-104
-TX,George Strait,16,199,-183
-UT,AWOLNATION,31,111,-80
-VA,Dave Matthews Band,48,113,-65
-VT,Phish,5,353,-348
-WA,The Head and the Heart,22,83,-61
-WI,Jack Johnson,45,99,-54
-WV,matchbox twenty,48,282,-234
-WY,Dirty Heads,48,1334,-1286
+﻿State,Name,State Rank,US Rank,Change,Genre
+AK,Ginger Kwan,33,12062,-12029,R&B
+AL,The Civil Wars,34,110,-76,Indie
+AR,Wiz Khalifa,15,69,-54,Hip-Hop
+AZ,Linkin Park,47,98,-51,Rock
+CA,Bonobo,28,85,-57,Electronic
+CO,The Naked And Famous,48,125,-77,Electronic
+CT,David Guetta,43,80,-37,Electronic
+DE,Rush,38,385,-347,Rock
+FL,Rick Ross,44,103,-59,Hip-Hop
+GA,Future,33,226,-193,Hip-Hop
+HI,J Boog,40,4703,-4663,R&B
+IA,B.o.B,32,82,-50,Pop
+ID,Tegan and Sara,31,107,-76,Indie
+IL,Sufjan Stevens,38,68,-30,Indie
+IN,Blake Shelton,31,91,-60,Country
+KS,Eric Church,48,162,-114,Country
+KY,Fall Out Boy,17,59,-42,Rock
+LA,Kevin Gates,15,1359,-1344,Hip-Hop
+MA,Neil Young,49,128,-79,Rock
+MD,Kelly Rowland,45,217,-172,R&B
+ME,R.E.M.,28,197,-169,Rock
+MI,Young Jeezy,34,138,-104,Rap
+MN,Metric,41,211,-170,Rock
+MO,The Shins,29,67,-38,Rock
+MS,August Alsina,42,909,-867,R&B
+MT,Tim McGraw,36,187,-151,Country
+NC,Miguel,37,88,-51,R&B
+ND,Stone Sour,47,735,-688,Alternative
+NE,Bastille,48,89,-41,Pop
+NH,Grateful Dead,29,191,-162,Rock
+NJ,Bruce Springsteen,23,109,-86,Rock
+NM,Alan Jackson,45,425,-380,Country
+NV,Ciara,34,106,-72,Pop
+NY,James Blake,47,130,-83,Electronic
+OH,Florida Georgia Line,26,75,-49,Country
+OK,Jason Aldean,24,84,-60,Country
+OR,Kurt Vile,49,212,-163,Indie
+PA,Edward Sharpe & the Magnetic Zeros,43,77,-34,Indie
+RI,Nirvana,48,126,-78,Rock
+SC,Hillsong United,24,262,-238,Rock
+SD,Hinder,42,1154,-1112,Rock
+TN,Juicy J,47,151,-104,Rap
+TX,George Strait,16,199,-183,Country
+UT,AWOLNATION,31,111,-80,Rock
+VA,Dave Matthews Band,48,113,-65,Rock
+VT,Phish,5,353,-348,Rock
+WA,The Head and the Heart,22,83,-61,Indie
+WI,Jack Johnson,45,99,-54,Rock
+WV,matchbox twenty,48,282,-234,Rock
+WY,Dirty Heads,48,1334,-1286,Alternative

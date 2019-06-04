@@ -21,7 +21,12 @@
 
 <body>
   <h1>US Distinctive Artist Rank Choropleth for States in 2014</h1>
-  <!-- <svg width="960" height="600"></svg> -->
+  <div class="input-group mb-3">
+      <label for="genre" class="col-sm-3 col-form-label">Genre:</label>
+      <select id="genre" class="custom-select" onchange="selectGenre()">
+        <option selected>All</option>
+      </select>
+    </div>
 </body>
 
 </html>

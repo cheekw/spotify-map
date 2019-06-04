@@ -20,14 +20,17 @@ window.onload = function () {
   // draws the map legend
   let legend = drawLegend(color, svg);
 
+  let genreOption = document.getElementById('genre');
+
   // draws the map
-  drawMap(color, svg, tooltip, legend);
+  drawMap(color, svg, tooltip, legend, genreOption);
 }
 
 // draws the entire choropleth map
-function drawMap(color, svg, tooltip, legend) {
+function drawMap(color, svg, tooltip, legend, genreOption) {
   let path = d3.geoPath();
-  d3.csv("./data/artist_ranks.csv").then(rankData => getStates(rankData))
+  d3.csv("./data/artist_ranks.csv").then(rankData => populateOptions(rankData, genreOption))
+    .then(rankData => getStates(rankData))
     .then(ranks => {
       d3.json("./data/us-state-names.json").then(states => {
         d3.json("./data/us-map.json").then(us => {
@@ -37,6 +40,40 @@ function drawMap(color, svg, tooltip, legend) {
       });
     });
 }
+
+// populates the data selections with available genres
+function populateOptions(data, genreOption) {
+  if (data.length > 0) {
+    let uniqueGenres = new Set();
+    for (let i = 0; i < data.length; i++) {
+      let k = data[i];
+      uniqueGenres.add(k['Genre']);
+    }
+    uniqueGenres.forEach(genre => { genreOption.options[genreOption.options.length] = new Option(genre); });
+  }
+  return data;
+}
+
+// fades non-associated states on select genre
+function selectGenre() {
+  let genreOption = document.getElementById('genre');
+  let genre = genreOption.options[genreOption.selectedIndex].text;
+  if (genre != "All") {
+    d3.csv("./data/artist_ranks.csv").then(rankData => {
+      for (let i = 0; i < rankData.length; i++) {
+        let state = rankData[i];
+        if (state['Genre'] != genre) {
+          console.log(state['State']);
+          d3.select("." + state['State'])
+            .transition()
+            .style("opacity", 0)
+        } else {
+        }
+      }
+    });
+  }
+}
+
 
 // adds the choropleth map
 function drawChoropleth(color, svg, tooltip, path, ranks, states, us, legend) {
@@ -71,6 +108,7 @@ function drawChoropleth(color, svg, tooltip, path, ranks, states, us, legend) {
         tooltip.html(
           "<b>" + "State: " + states[parseInt(d.id)][1] + "</b>" + "<br/>" +
           "Artist: " + ranks[states[parseInt(d.id)][0]]['Name'] + "<br/>" +
+          "Genre: " + ranks[states[parseInt(d.id)][0]]['Genre'] + "<br/>" +
           "US Rank: " + ranks[states[parseInt(d.id)][0]]['US Rank'] + "<br/>" +
           "State Rank: " + ranks[states[parseInt(d.id)][0]]['State Rank']
         )
@@ -81,8 +119,9 @@ function drawChoropleth(color, svg, tooltip, path, ranks, states, us, legend) {
     .on("mouseout", (d) => {
       tooltip.transition()
         .duration(500)
-        .style("opacity", 0);
+        .style("opacity", 0)
     });
+
   svg.append("path")
     .attr("class", "state-borders")
     .attr("d", path(topojson.mesh(us, us.objects.states, (a, b) => { return a !== b; })));
@@ -178,7 +217,7 @@ function drawLegend(color, svg) {
       .attr("fill", d => color(d[0]));
 
     g.append("text")
-      .attr("class", "caption")
+      .attr("class", "caption legend")
       .attr("x", x.range()[0])
       .attr("y", -6)
       .attr("fill", "#000")
