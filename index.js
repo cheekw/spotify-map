@@ -97,6 +97,8 @@ function drawChoropleth(color, svg, tooltip, path, ranks, states, us, legend) {
     .on("click", (d) => {
       if (isNotDC(d.id)) {
         fadeAnimation(states, d.id, legend);
+        let genreOption = document.getElementById('genre');
+        genreOption.value = 'All';
       }
     })
     .on("mousemove", (d) => {
