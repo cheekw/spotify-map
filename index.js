@@ -56,6 +56,7 @@ function populateOptions(data, genreOption) {
 
 // fades non-associated states on select genre
 function selectGenre() {
+  unfadeAnimation(undefined);
   let genreOption = document.getElementById('genre');
   let genre = genreOption.options[genreOption.selectedIndex].text;
   if (genre != "All") {
@@ -63,11 +64,9 @@ function selectGenre() {
       for (let i = 0; i < rankData.length; i++) {
         let state = rankData[i];
         if (state['Genre'] != genre) {
-          console.log(state['State']);
           d3.select("." + state['State'])
             .transition()
-            .style("opacity", 0)
-        } else {
+            .style("opacity", 0.03)
         }
       }
     });
@@ -145,6 +144,17 @@ function unfadeMap(legend) {
   });
 }
 
+// creates unfade animation
+function unfadeAnimation(legend) {
+  d3.selectAll(".states")
+    .transition()
+    .style("opacity", 1);
+  if (typeof legend !== 'undefined') {
+    legend.transition()
+      .style("opacity", 1);
+  }
+}
+
 // gets current click target
 function equalToEventTarget() {
   return this == d3.event.target;
@@ -163,15 +173,6 @@ function fadeAnimation(states, id, legend) {
     .transition()
     .style("opacity", 1);
   legend.transition().style("opacity", 0.1);
-}
-
-// creates unfade animation
-function unfadeAnimation(legend) {
-  d3.selectAll(".states")
-    .transition()
-    .style("opacity", 1);
-  legend.transition()
-    .style("opacity", 1);
 }
 
 // gets rank dictionary from an array, converting the state into a key
